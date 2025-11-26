@@ -16,10 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Apply to all endpoints
-                .allowedOrigins(
-                        "http://localhost:5173", // Local React development server
-                        "future-link"
-                )
+                .allowedOriginPatterns("*")
                 .allowedMethods("GET");
     }
 
