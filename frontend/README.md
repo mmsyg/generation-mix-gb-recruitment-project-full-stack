@@ -1,73 +1,57 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive dashboard built with React and TypeScript that helps users visualize the UK energy mix and find the eco-friendliest time to use electricity.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Intelligent Advisor:** Interactive slider to select window of optimal charging using renewable energy.
+* **Data Visualization:** Beautiful Donut Charts (using MUI X Charts) showing the renewable vs. fossil fuel breakdown.
+* **Dark Mode UI:** Sleek, responsive design styled with custom CSS and CSS variables.
+* **Dynamic Coloring:** Visual indicators (Green for renewable, Grey for non-renewable) consistent across charts and lists.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Framework:** React 18 (Vite)
+* **Language:** TypeScript
+* **Visualization:** MUI X Charts
+* **Components:** Material UI (Slider)
+* **Deployment:** Render (Static Site)
 
-## Expanding the ESLint configuration
+## How to Run
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+* Node.js (v18 or newer)
+* NPM
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Navigate to frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Local Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Ensure the Backend is running on port 8080.
+2. Start the frontend:
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Environment Variables
+
+| Variable | Description | Default |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | The base URL of the Java Backend. | `http://localhost:8080` |
+
+## Project Structure
+
+* `src/components`: Reusable UI components (ForecastCard, WindowSection).
+* `src/types.ts`: TypeScript interfaces matching the Java DTOs.
+* `src/utils.ts`: Helper functions (e.g., fuel color mapping logic).
